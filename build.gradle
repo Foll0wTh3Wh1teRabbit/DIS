@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+}
+
+group 'ru.nsu.kosarev'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVer = '1.18.24'
+    slf4jVer = '2.0.4'
+    commonsCompressVer = '1.22'
+    commonsCliVer = '1.5.0'
+}
+
+dependencies {
+    //Lombok
+    compileOnly "org.projectlombok:lombok:$lombokVer"
+    annotationProcessor "org.projectlombok:lombok:$lombokVer"
+    testCompileOnly "org.projectlombok:lombok:$lombokVer"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVer"
+
+    //Logback
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+
+    //We don't need to add Slf4j dependency separately because of dependency constraints
+
+    //Apache commons compress
+    implementation "org.apache.commons:commons-compress:$commonsCompressVer"
+
+    //Apache commons CLI
+    implementation "commons-cli:commons-cli:$commonsCliVer"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

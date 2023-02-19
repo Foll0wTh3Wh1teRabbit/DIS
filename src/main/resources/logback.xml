@@ -1,0 +1,39 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS}, level=%level{5}, logger=%logger{36}: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE1" class="ch.qos.logback.core.FileAppender">
+        <file> logFirst.txt </file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS}, level=%level{5}, logger=%logger{36}: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE2" class="ch.qos.logback.core.FileAppender">
+        <file> logSecond.txt </file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS}, level=%level{5}, logger=%logger{36}: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name = "ru.nsu.kosarev.crawler.UserFixCounter">
+        <appender-ref ref="FILE1"/>
+    </logger>
+
+    <logger name = "ru.nsu.kosarev.crawler.UniqueKeyCounter">
+        <appender-ref ref="FILE2"/>
+    </logger>
+
+    <logger name = "ru.nsu.kosarev.crawler.Main">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
